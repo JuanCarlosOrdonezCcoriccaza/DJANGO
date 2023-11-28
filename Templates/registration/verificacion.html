@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<meta charset="UTF-8">
+
+<head>
+    <!-- Design by foolishdeveloper.com -->
+    <title>Verificación</title>
+    <!--Stylesheet-->
+    <link href="{% static 'css/registration.css'%}" rel="stylesheet" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+           
+</head>
+
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form>
+        <h3>Verificación</h3>
+        <br>
+        <br>
+        <h5>Ingrese su número de teléfono para enviar un mensaje de texto (MSM) con el código de verificación.</h5>
+        <label for="username">Número de teléfono</label>
+        <input type="text" placeholder="+51 999 999 999" id="codigo" name="codigo">
+        <button>Enviar código</button>
+    </form>
+</body>
+
+</html>

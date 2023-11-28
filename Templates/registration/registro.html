@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<meta charset="UTF-8">
+
+<head>
+    <!-- Design by foolishdeveloper.com -->
+    <title>Acceder</title>
+    <!--Stylesheet-->
+    <link href="{% static 'css/registration.css'%}" rel="stylesheet" />
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!--Stylesheet-->
+    <style media="screen">
+        form {
+            height: 650px;
+        }   
+
+        .social .fb {
+            margin-left: 20px;
+        }
+
+        .social i {
+            margin-right: 1px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <br>
+        <h3>Crear cuenta</h3>
+        <label for="username">Nombre de Usuario</label>
+        <input type="text" placeholder="Nombre" id="username">
+        
+        <label for="username">Número de teléfono</label>
+        <input type="text" placeholder="+51 999 999 999" id="username">
+        
+        <label for="password">Contraseña</label>
+        <input type="password" placeholder="Password" id="password">
+        
+        <button type="submit">Crear cuenta</button>
+        <br> </br>
+        <a class="user" href="/" > Ya tengo cuenta</a>
+
+    </form>
+</body>
+
+</html>
