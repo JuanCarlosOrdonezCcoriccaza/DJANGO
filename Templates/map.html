@@ -1,0 +1,131 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+{% block extend_head %}
+
+<script src='https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}'></script>
+
+{% endblock %}
+
+{% block extend_nav %} 
+
+<ul class="sidenav">
+  <li class="nav-item active">
+    <a class="nav-link" href="/">Inicio</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/admin">Administrar</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tablas">Equipo</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href='/salida'> <i class="fa fa-user" aria-hidden="true"></i> Cerrar Sesion</a>
+  </li>
+  <li><a href="{% url 'Control:route' %}">Rutas</a></li>
+  <li><a class="active" href="#map">Mapa</a></li>
+</ul>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<h3 id="map">Mapa de Recorrido</h3>
+
+<div class="container">
+
+  <table>
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Inicio</td>
+        <td>{{directions.origin}}</td>      
+      </tr>
+      <tr>
+        <td>Destino</td>
+        <td>{{directions.destination}}</td>      
+      </tr>
+      <tr>
+        <td>Duracion</td>
+        <td>{{directions.duration}}</td>      
+      </tr>
+      <tr>
+        <td>Distancia</td>
+        <td>{{directions.distance}}</td>      
+      </tr>
+      <tr>
+        <td>Direciones</td>
+        <td id="dir-toggle">click <a href="javascript:void(0)" onclick="DirectionsToggle()">here</a></td>      
+      </tr>
+
+    </tbody>
+  </table>
+
+  <table id="dir-table" hidden>
+    <thead>
+      <tr>
+        <th>Direciones</th>
+        <th>Distancia</th>
+        <th>Duracion</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for leg in directions.route %}
+          <tr>
+          <td>Punto {{ forloop.counter }}</td>
+          <td></td>
+          <td></td>  
+        </tr>
+        {% for dist, dur, text in leg.steps %}
+        <tr>
+          <td>{{text|safe}}</td>
+          <td>{{dist}}</td>
+          <td>{{dur}}</td>   
+        </tr>
+        {% endfor %}
+      {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+
+<div class="map-container">
+
+   <div id="map-route"></div>
+
+</div>
+
+{% endblock %}
+
+{% block extend_footer %}
+
+
+<script type="text/javascript">
+
+    var google_api_key = "{{google_api_key|safe}}";
+    var lat_a = {{lat_a|safe}};
+    var long_a = {{long_a|safe}};
+    var lat_b = {{lat_b|safe}};
+    var long_b = {{long_b|safe}};
+    var lat_c = {{lat_c|safe}};
+    var long_c = {{long_c|safe}};
+    var lat_d = {{lat_d|safe}};
+    var long_d = {{long_d|safe}};
+    var origin = "{{origin|safe}}";
+    var destination = "{{destination|safe}}";
+    var directions = {{directions|safe}}
+
+  </script>
+
+  <script src="{% static 'js/google_maps.js' %}"></script>
+
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+{% block extend_head %}
+
+<script src='https://www.google.com/recaptcha/api.js?render={{recaptcha_site_key}}'></script>
+
+{% endblock %}
+
+{% block extend_nav %} 
+
+
+<ul class="sidenav">
+  <li class="nav-item active">
+    <a class="nav-link" href="/">Inicio</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/admin">Administrar</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/tablas">Equipo</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href='/salida'> <i class="fa fa-user" aria-hidden="true"></i> Cerrar Sesion</a>
+  </li>
+  <li><a class="active" href="{% url 'Control:route' %}">Rutas</a></li>
+  <li><a href="javascript:void(0)" onclick="alert('Please add addresses')">Mapa</a></li>
+</ul>
+{% endblock %}
+
+
+{% block content %}
+<h3>Ruta de Recorrido</h3>
+
+<div class="container">
+
+   <label for="id-google-address-a">Inicio</label>
+   <input type="text" placeholder="*Direccion" id="id-google-address-a" name="google_address_a">
+   
+   <label for="id-google-address-c">Punto de Espera 1</label>
+   <input type="text" placeholder="*Direccion" id="id-google-address-c" name="google_address_c">
+
+   <label for="id-google-address-d">Punto de Espera 2</label>
+   <input type="text" placeholder="*Direccion" id="id-google-address-d" name="google_address_d">
+
+   <label for="id-google-address-b">Destino</label>
+   <input type="text" placeholder="*Direccion" id="id-google-address-b" name="google_address_b">
+
+   
+
+
+   <input type="hidden" class="geo" id="id-lat-a" value="">
+   <input type="hidden" class="geo" id="id-long-a" value="">
+   <input type="hidden" class="geo" id="id-lat-b" value="">
+   <input type="hidden" class="geo" id="id-long-b" value="">
+   <input type="hidden" class="geo" id="id-lat-c" value="">
+   <input type="hidden" class="geo" id="id-long-c" value="">
+   <input type="hidden" class="geo" id="id-lat-d" value="">
+   <input type="hidden" class="geo" id="id-long-d" value="">
+
+
+</div>
+
+{% endblock %}
+
+{% block extend_footer %}
+
+
+<script type="text/javascript">
+
+    var google_api_key = "{{google_api_key|safe}}";
+
+  </script>
+
+  <script src="{% static 'js/google_places.js' %}"></script>
+
+
+{% endblock %}

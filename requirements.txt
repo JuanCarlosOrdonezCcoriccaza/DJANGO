@@ -1,0 +1,12 @@
+asgiref
+certifi
+chardet
+django-decouple
+humanfriendly
+idna
+pyreadline
+pytz
+requests
+sqlparse
+typing-extensions
+urllib3

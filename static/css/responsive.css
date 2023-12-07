@@ -10,7 +10,7 @@
   .hero_area {
     background: linear-gradient(130deg, #231a6f, #0f054c);
   }
-
+  
   .hero_area .hero_bg_box {
     display: none;
   }
@@ -42,7 +42,7 @@
 
 @media (max-width: 576px) {
   .header_section .header_top .contact_nav a span {
-    display: none;
+    display: none;  
   }
 
 
@@ -87,7 +87,7 @@
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 360px) {
   .service_section .box {
     flex-direction: column;
   }
